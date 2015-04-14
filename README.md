@@ -9,7 +9,7 @@ cat <<EOF >> .bashrc
 # Run per-file configuration
 if [ -d ~/.bashrc.d ]; then
 	for b in ~/.bashrc.d/*.sh ; do
-		source $b
+		source \$b
 	done
 fi
 EOF
