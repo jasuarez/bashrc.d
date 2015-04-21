@@ -8,3 +8,9 @@ export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
 if [ -d ${HOME}/bin ]; then
 	PATH=${HOME}/bin:${PATH}
 fi
+
+# Vagrant
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
+if [ -d /opt/vm/vagrant.d ]; then
+	export VAGRANT_HOME=/opt/vm/vagrant.d
+fi
