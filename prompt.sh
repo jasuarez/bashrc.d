@@ -30,6 +30,7 @@ parse_vcs ()
 
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 	debian_chroot=$(cat /etc/debian_chroot)
+        PS1='\[\033[01;37m\]($debian_chroot${UNDER_JHBUILD:+\[\033[00;32m\]#jhbuild})\[\033[01;30m\]\u@\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\033[00;34m\]\w\[\033[00m\]\$ '
+else
+        PS1='${UNDER_JHBUILD:+\[\033[00;32m\](#jhbuild)}\[\033[01;30m\]\u@\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\033[00;34m\]\w\[\033[00m\]\$ '
 fi
-
-PS1='\[\033[01;37m\]${debian_chroot:+($debian_chroot${UNDER_JHBUILD:+\[\033[00;32m\]#jhbuild})}\[\033[01;30m\]\u@\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\033[00;34m\]\w\[\033[00m\]\$ '
