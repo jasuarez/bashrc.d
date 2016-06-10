@@ -28,6 +28,10 @@ parse_vcs ()
         echo -n $(parse_git_branch && parse_git_svn_revision && parse_svn_revision && parse_cvs_name) | sed 's#\(.*\)#{\1}#'
 }
 
+if [ -n "$DOCKER_NAME" ]; then
+	chroot_name=$DOCKER_NAME
+fi
+
 if [ -n "$SCHROOT_CHROOT_NAME" ]; then
 	chroot_name=$SCHROOT_CHROOT_NAME
 fi
