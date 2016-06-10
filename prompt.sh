@@ -28,9 +28,16 @@ parse_vcs ()
         echo -n $(parse_git_branch && parse_git_svn_revision && parse_svn_revision && parse_cvs_name) | sed 's#\(.*\)#{\1}#'
 }
 
-if [ -r /etc/debian_chroot ]; then
-	debian_chroot=$(cat /etc/debian_chroot)
-        PS1='\[\033[01;37m\]($debian_chroot${UNDER_JHBUILD:+\[\033[00;32m\]#jhbuild})\[\033[01;30m\]\u@\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\033[00;34m\]\w\[\033[00m\]\$ '
+if [ -n "$SCHROOT_CHROOT_NAME" ]; then
+	chroot_name=$SCHROOT_CHROOT_NAME
+fi
+
+if [ -n "$UNDER_JHBUILD" ]; then
+	env_name="jhbuild"
+fi
+
+if [ -n "$chroot_name" ]; then
+        PS1='\[\033[01;37m\]($chroot_name${env_name:+\[\033[00;32m\]#${envname}})\[\033[01;30m\]\u@\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\033[00;34m\]\w\[\033[00m\]\$ '
 else
-        PS1='${UNDER_JHBUILD:+\[\033[00;32m\](#jhbuild)}\[\033[01;30m\]\u@\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\033[00;34m\]\w\[\033[00m\]\$ '
+        PS1='${env_name:+\[\033[00;32m\](#${env_name})}\[\033[01;30m\]\u@\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\033[00;34m\]\w\[\033[00m\]\$ '
 fi
