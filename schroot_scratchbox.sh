@@ -1,4 +1,4 @@
-if [ "$(basename ${BASH_SOURCE} .sh)" != "${SCHROOT_CHROOT_NAME}" ]; then
+if [ "$(basename ${BASH_SOURCE} .sh)" != "schroot_${SCHROOT_CHROOT_NAME}" ]; then
    return 0
 fi
 
