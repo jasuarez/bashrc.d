@@ -18,8 +18,3 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 if [ -d /opt/vm/vagrant.d ]; then
 	export VAGRANT_HOME=/opt/vm/vagrant.d
 fi
-
-# Guix
-if [ -d ${HOME}/.guix-profile ]; then
-    PATH=${HOME}/.guix-profile/bin:${PATH}
-fi
