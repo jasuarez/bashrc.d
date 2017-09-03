@@ -1,5 +1,5 @@
 if [ -d ${HOME}/.guix-profile ]; then
-    PATH=${HOME}/.guix-profile/bin:${PATH}
+    export PATH=${HOME}/.guix-profile/bin:${HOME}/.guix-profile/sbin${PATH:+:}${PATH}
 fi
 
 if [ -d ${HOME}/.guix-profile/share/guile ]; then
