@@ -2,12 +2,18 @@ if [ "$(basename ${BASH_SOURCE} .sh)" != "schroot_${SCHROOT_CHROOT_NAME}" ]; the
    return 0
 fi
 
-export JHBUILDRC=~/.jhbuildrc.mesa
+if [ -f ~/.jhbuildrc.mesa ]; then
+	export JHBUILDRC=~/.jhbuildrc.mesa
+fi
+
+export LLVM_CONFIG=llvm-config-5.0
 
 if [ -f /opt/gnome/install/share/vulkan/icd.d/intel_icd.x86_64.json ]; then
 	export VK_ICD_FILENAMES=/opt/gnome/install/share/vulkan/icd.d/intel_icd.x86_64.json
+elif [ -f /home/igalia/jasuarez/jhbuild/install/share/vulkan/icd.d/intel_icd.x86_64.json ]; then
+	export VK_ICD_FILENAMES=/home/igalia/jasuarez/jhbuild/install/share/vulkan/icd.d/intel_icd.x86_64.json
 fi
 
-if [ -x ~/Projects/mesa/vulkancts-github/build/external/vulkancts/modules/vulkan/deqp-vk ]; then
-	export PIGLIT_DEQP_VK_BIN=~/Projects/mesa/vulkancts-github/build/external/vulkancts/modules/vulkan/deqp-vk
-fi
+# Disable Mesa GLSL cache
+export MESA_GLSL_CACHE_DISABLE=true
+export ANV_ENABLE_PIPELINE_CACHE=0
