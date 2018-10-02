@@ -18,3 +18,5 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 if [ -d /opt/vm/vagrant.d ]; then
 	export VAGRANT_HOME=/opt/vm/vagrant.d
 fi
+
+export MAKEFLAGS="-j$(nproc)"
