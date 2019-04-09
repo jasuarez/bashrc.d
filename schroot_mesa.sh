@@ -20,3 +20,9 @@ export ANV_ENABLE_PIPELINE_CACHE=0
 
 # Disable icecc
 unset CCACHE_PREFIX
+
+# Other envvars used
+export INTEL_PRECISE_TRIG=1
+export PIGLIT_DEQP_VK_BIN=~/vk-gl-cts/_build/external/vulkancts/modules/vulkan/deqp-vk
+export DISPLAY=:0
+
