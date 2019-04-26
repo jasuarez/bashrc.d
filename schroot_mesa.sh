@@ -8,10 +8,25 @@ fi
 
 export LLVM_CONFIG=llvm-config-5.0
 
+# Vulkan ICD profiles
 if [ -f /opt/gnome/install/share/vulkan/icd.d/intel_icd.x86_64.json ]; then
-	export VK_ICD_FILENAMES=/opt/gnome/install/share/vulkan/icd.d/intel_icd.x86_64.json
-elif [ -f /home/igalia/jasuarez/jhbuild/install/share/vulkan/icd.d/intel_icd.x86_64.json ]; then
-	export VK_ICD_FILENAMES=/home/igalia/jasuarez/jhbuild/install/share/vulkan/icd.d/intel_icd.x86_64.json
+	export VK_ICD_FILENAMES=/opt/gnome/install/share/vulkan/icd.d/intel_icd.x86_64.json:$VK_ICD_FILENAMES
+fi
+
+if [ -f /home/igalia/jasuarez/jhbuild/install/share/vulkan/icd.d/intel_icd.x86_64.json ]; then
+	export VK_ICD_FILENAMES=/home/igalia/jasuarez/jhbuild/install/share/vulkan/icd.d/intel_icd.x86_64.json:$VK_ICD_FILENAMES
+fi
+
+if [ -f /opt/gnome/install/share/vulkan/icd.d/radeon_icd.x86_64.json ]; then
+        export VK_ICD_FILENAMES=/opt/gnome/install/share/vulkan/icd.d/radeon_icd.x86_64.json:$VK_ICD_FILENAMES
+fi
+
+if [ -f /home/igalia/jasuarez/jhbuild/install/share/vulkan/icd.d/radeon_icd.x86_64.json ]; then
+        export VK_ICD_FILENAMES=/home/igalia/jasuarez/jhbuild/install/share/vulkan/icd.d/radeon_icd.x86_64.json:$VK_ICD_FILENAMES
+fi
+
+if [ -f /etc/vulkan/icd.d/amd_icd64.json ]; then
+        export VK_ICD_FILENAMES=/etc/vulkan/icd.d/amd_icd64.json:$VK_ICD_FILENAMES
 fi
 
 # Disable Mesa GLSL cache
