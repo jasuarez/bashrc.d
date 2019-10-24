@@ -42,5 +42,5 @@ fi
 
 chroot_env_names="${chroot_name}${env_name}"
 
-PS1='${chroot_env_names:+(}${chroot_name:+\[\033[01;37m\]${chroot_name}\[\033[00m\]}${env_name:+${chroot_name:+#}\[\033[00;32m\]${env_name}\[\033[00m\]}${chroot_env_names:+)}\[\e[38;5;208m\]\u\[\033[00m\]@\e[1m\[\e[38;5;208m\]\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\e[38;5;39m\]\w\[\033[00m\]$ '
+PS1='${chroot_env_names:+(}${chroot_name:+\[\033[01;37m\]${chroot_name}\[\033[00m\]}${env_name:+${chroot_name:+#}\[\033[00;32m\]${env_name}\[\033[00m\]}${chroot_env_names:+)}\[\e[38;5;208m\]\u\[\033[00m\]@\[\e[38;5;208m\]\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\e[38;5;39m\]\w\[\033[00m\]$ '
 
