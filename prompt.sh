@@ -40,8 +40,7 @@ if [ -n "$UNDER_JHBUILD" ]; then
 	env_name="jhbuild"
 fi
 
-if [ -n "$chroot_name" ]; then
-        PS1='\[\033[01;37m\]($chroot_name${env_name:+\[\033[00;32m\]#${env_name}})\[\e[38;5;208m\]\u@\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\e[38;5;39m\]\w\[\033[00m\]\$ '
-else
-        PS1='${env_name:+\[\033[00;32m\](#${env_name})}\[\e[38;5;208m\]\u@\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\e[38;5;39m\]\w\[\033[00m\]\$ '
-fi
+chroot_env_names="${chroot_name}${env_name}"
+
+PS1='${chroot_env_names:+(}${chroot_name:+\[\033[01;37m\]${chroot_name}\[\033[00m\]}${env_name:+${chroot_name:+#}\[\033[00;32m\]${env_name}\[\033[00m\]}${chroot_env_names:+)}\[\e[38;5;208m\]\u\[\033[00m\]@\e[1m\[\e[38;5;208m\]\h\[\033[00m\]:\[\033[31m\]$(parse_vcs)\[\e[38;5;39m\]\w\[\033[00m\]$ '
+
