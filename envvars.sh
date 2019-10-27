@@ -25,4 +25,14 @@ if [ -d /opt/vm/vagrant.d ]; then
 	export VAGRANT_HOME=/opt/vm/vagrant.d
 fi
 
+# Makeflags
 export MAKEFLAGS="-j$(nproc)"
+
+# Container
+if [ -n "$DOCKER_NAME" ]; then
+	export CONTAINER_NAME=$DOCKER_NAME
+fi
+
+if [ -n "$SCHROOT_CHROOT_NAME" ]; then
+	export CONTAINER_NAME=$SCHROOT_CHROOT_NAME
+fi
