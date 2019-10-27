@@ -2,7 +2,6 @@ unset CC
 unset CXX
 unset CCACHE_PREFIX
 unset CCACHE_DISABLE
-unset CCACHE_DIR
 
 # Check if ccache is available
 if [ -d /usr/lib64/ccache ]; then
@@ -40,9 +39,6 @@ if [ ${ccachedir} ]; then
     export PATH=${ccachedir}:${PATH}
 	 export CCACHE_COMPRESS=1
 	 export CCACHE_UMASK=002
-    if [ -d /opt/ccache/cache ]; then
-	     export CCACHE_DIR=/opt/ccache/cache
-    fi
     if [ ${iceccdir} ]; then
              export CCACHE_PREFIX=icecc
     fi

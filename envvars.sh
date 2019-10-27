@@ -13,6 +13,12 @@ if [ -d ${HOME}/.local/bin ]; then
 	PATH=${HOME}/.local/bin:${PATH}
 fi
 
+# Ccache
+
+if [ -d /opt/ccache/cache ]; then
+	export CCACHE_DIR=/opt/ccache/cache
+fi
+
 # Vagrant
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 if [ -d /opt/vm/vagrant.d ]; then
