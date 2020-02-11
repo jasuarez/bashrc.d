@@ -44,3 +44,4 @@ unset CCACHE_PREFIX
 export INTEL_PRECISE_TRIG=1
 export PIGLIT_DEQP_VK_BIN=~/vk-gl-cts/_build/external/vulkancts/modules/vulkan/deqp-vk
 export DISPLAY=:0
+export GLSLC=glslc
