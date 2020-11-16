@@ -2,7 +2,9 @@
 export VISUAL=vim
 
 # Chromium development
-export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
+if [ -x /usr/local/sbin/chrome-devel-sandbox ]; then
+	export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
+fi
 
 # Set PATH so it includes user's private bin
 if [ -d ${HOME}/bin ]; then
@@ -14,7 +16,6 @@ if [ -d ${HOME}/.local/bin ]; then
 fi
 
 # Ccache
-
 if [ -d /opt/ccache/cache ]; then
 	export CCACHE_DIR=/opt/ccache/cache
 fi
