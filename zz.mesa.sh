@@ -33,6 +33,11 @@ fi
 #         export VK_ICD_FILENAMES=/etc/vulkan/icd.d/amd_icd64.json:$VK_ICD_FILENAMES
 # fi
 
+# Enable bash completion
+if [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion
+fi
+
 # Disable Mesa GLSL cache
 export MESA_GLSL_CACHE_DISABLE=true
 export ANV_ENABLE_PIPELINE_CACHE=0
