@@ -42,3 +42,7 @@ fi
 if [ -n "$SCHROOT_CHROOT_NAME" ]; then
 	export CONTAINER_NAME=$SCHROOT_CHROOT_NAME
 fi
+
+if [ -f "/run/.containerenv" ]; then
+	export CONTAINER_NAME=`cat /run/.containerenv | grep name | cut -f2 -d\"`
+fi
