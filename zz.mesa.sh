@@ -54,3 +54,4 @@ export MESA_LOADER_DRIVER_OVERRIDE=v3d
 
 # Host-apps to use
 alias emacs='/usr/libexec/flatpak-xdg-utils/flatpak-spawn --host emacs'
+alias meld='/usr/libexec/flatpak-xdg-utils/flatpak-spawn --host meld'
