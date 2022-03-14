@@ -29,11 +29,11 @@ parse_vcs ()
 }
 
 if [ -n "$CONTAINER_NAME" ]; then
-	chroot_name=$CONTAINER_NAME
+        chroot_name=$CONTAINER_NAME
 fi
 
 if [ -n "$UNDER_JHBUILD" ]; then
-	env_name="jhbuild"
+        env_name="jhbuild"
 fi
 
 chroot_env_names="${chroot_name}${env_name}"
