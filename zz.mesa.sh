@@ -39,7 +39,7 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 # Disable Mesa GLSL cache
-#export MESA_GLSL_CACHE_DISABLE=true
+export MESA_SHADER_CACHE_DISABLE=true
 #export ANV_ENABLE_PIPELINE_CACHE=0
 
 # Disable icecc
