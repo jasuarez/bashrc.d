@@ -1,8 +1,3 @@
-unset CC
-unset CXX
-unset CCACHE_PREFIX
-unset CCACHE_DISABLE
-
 # Check if ccache is available
 if [ -d /usr/lib64/ccache ]; then
     ccachedir=/usr/lib64/ccache
@@ -21,27 +16,20 @@ if [ -d /usr/lib/icecc/bin ]; then
     iceccdir=/usr/lib/icecc/bin
 fi
 
-# Reset ccache / icecream from PATH. We want to setup ourselves
-if [ ${ccachedir} ]; then
-    export PATH=${PATH//:${ccachedir}:/:}
-    export PATH=${PATH//:${ccachedir}/}
-    export PATH=${PATH//${ccachedir}:/}
-fi
-
+# Set first icecc
 if [ ${iceccdir} ]; then
     export PATH=${PATH//:${iceccdir}:/:}
     export PATH=${PATH//:${iceccdir}/}
     export PATH=${PATH//${iceccdir}:/}
+    export PATH=${iceccdir}:${PATH}
 fi
 
-# Setup paths
+# Now set ccache before icecc
 if [ ${ccachedir} ]; then
+    export PATH=${PATH//:${ccachedir}:/:}
+    export PATH=${PATH//:${ccachedir}/}
+    export PATH=${PATH//${ccachedir}:/}
     export PATH=${ccachedir}:${PATH}
-	 export CCACHE_COMPRESS=1
-	 export CCACHE_UMASK=002
-    if [ ${iceccdir} ]; then
-             export CCACHE_PREFIX=icecc
-    fi
-elif [ ${iceccdir} ]; then
-    export PATH=${iceccdir}:${PATH}
+    export CCACHE_COMPRESS=1
+    export CCACHE_UMASK=002
 fi
