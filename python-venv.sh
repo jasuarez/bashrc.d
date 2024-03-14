@@ -3,7 +3,8 @@ PYTHON=python3
 
 # Create Python venv
 if [ ! -d ${VENV} ] &&
-       $(command -v ${PYTHON} >/dev/null 2>&1) ; then
+       $(command -v ${PYTHON} >/dev/null 2>&1) &&
+       $(${PYTHON} -c "import venv" >/dev/null 2>&1) ; then
     echo "Creating ${PYTHON} venv..."
     ${PYTHON} -m venv ${VENV}
 fi
