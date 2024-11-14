@@ -6,6 +6,24 @@ if [ -f ~/.jhbuildrc.mesa ]; then
 	export JHBUILDRC=~/.jhbuildrc.mesa
 fi
 
+# Install python virtual env
+VENV=/opt/mesa/pip
+PYTHON=python3
+
+# Create Python venv
+if [ ! -d ${VENV} ] &&
+       $(command -v ${PYTHON} >/dev/null 2>&1) &&
+       $(${PYTHON} -c "import venv" >/dev/null 2>&1) ; then
+    echo "Creating ${PYTHON} venv..."
+    ${PYTHON} -m venv ${VENV}
+fi
+
+# Enable Python venv
+if [ -d ${VENV} ]; then
+    export VIRTUAL_ENV_DISABLE_PROMPT=0
+    source ${VENV}/bin/activate
+fi
+
 # Vulkan ICD profiles
 unset VK_ICD_FILENAMES
 
@@ -57,6 +75,7 @@ export PIGLIT_DEQP_VK_BIN=~/vk-gl-cts/_build/external/vulkancts/modules/vulkan/d
 export DISPLAY=:0
 export GLSLC=glslc
 export MESA_LOADER_DRIVER_OVERRIDE=v3d
+export PIGLIT_PLATFORM=x11_egl
 
 # Host-apps to use
 alias emacs='/usr/libexec/flatpak-xdg-utils/flatpak-spawn --host emacs'
