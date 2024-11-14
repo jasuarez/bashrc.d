@@ -3,7 +3,6 @@ alias mv='mv -i'
 alias ll='ls -lh --color=auto'
 alias ls='ls --color'
 
-alias discover-hub-hosts='nmap -sP 10.42.0.0/24'
-alias discover-lan-hosts='nmap -sP 192.168.50.0/24'
+alias discover-lan-hosts='nmap -sP 192.168.1.1-255'
 
 alias sync-org='unison orgfiles -batch -ui text'
